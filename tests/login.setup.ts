@@ -13,6 +13,8 @@ setup("do login", async ({ page }) => {
     .fill(process.env.PASSWORD!);
   await page.getByRole("button", { name: "Log in" }).click();
 
+  await page.waitForURL("/wiki/Main_Page");
+
   await expect(
     page.getByRole("button", { name: "Personal tools" })
   ).toBeVisible();
