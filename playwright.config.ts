@@ -3,8 +3,6 @@ import path from "path";
 
 require("dotenv").config();
 
-export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json");
-
 export default defineConfig({
   testDir: "./tests",
   reporter: [["list"], ["html"]],
@@ -31,7 +29,7 @@ export default defineConfig({
       testMatch: "**/*loggedin.spec.ts",
       dependencies: ["setup"],
       use: {
-        storageState: STORAGE_STATE,
+        storageState: "playwright/.auth/user.json",
       },
     },
     // this project runs all tests except the setup and logged in tests

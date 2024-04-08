@@ -1,5 +1,6 @@
 import { test as setup, expect } from "@playwright/test";
-import { STORAGE_STATE } from "../playwright.config";
+
+const authFile = "playwright/.auth/user.json";
 
 setup("do login", async ({ page }) => {
   await page.goto("/");
@@ -15,5 +16,6 @@ setup("do login", async ({ page }) => {
   await expect(
     page.getByRole("button", { name: "Personal tools" })
   ).toBeVisible();
-  await page.context().storageState({ path: STORAGE_STATE });
+
+  await page.context().storageState({ path: authFile });
 });
