@@ -5,6 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("menu", async ({ page }) => {
-  await page.getByRole("button", { name: "Your alerts" }).click();
-  await page.getByRole("link", { name: "All notifications" }).click();
+  await page.getByLabel("Search Wikipedia").click();
+  await page.getByLabel("Search Wikipedia").fill("testing");
+  await page.getByRole("button", { name: "Search" }).click();
 });
